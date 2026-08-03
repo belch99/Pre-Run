@@ -1,9 +1,12 @@
-import streamlit as st
-from _shared import load_table, empty_state
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-st.title("Early Detection")
-st.caption("Score >= 75 AND the stock has NOT already made a large move (SPEC #36). "
-           "This is the core purpose of PRE-RUN.")
+import streamlit as st
+from src.utils.dashboard_helpers import load_table, empty_state
+
+st.title("Command Center")
+st.caption("Top PRE-RUN candidates, most recent trading day.")
 
 scores = load_table("scores")
 if scores.empty:
@@ -11,14 +14,16 @@ if scores.empty:
     st.stop()
 
 latest_date = scores["date"].max()
-today = scores[scores["date"] == latest_date]
-early = today[(today["prerun_score"] >= 75) & (today["already_running"] == 0)] \
-    .sort_values("prerun_score", ascending=False)
+today = scores[scores["date"] == latest_date].sort_values("prerun_score", ascending=False)
 
-if early.empty:
-    st.info(f"No qualifying setups as of {latest_date}. That's a valid, honest result — not every day has one.")
-else:
-    st.dataframe(
-        early[["ticker", "prerun_score", "classification", "market_regime"]].reset_index(drop=True),
-        use_container_width=True,
-    )
+st.subheader(f"As of {latest_date}")
+cols = ["ticker", "prerun_score", "classification", "already_running",
+        "max_possible_pts", "market_regime", "universe_mode"]
+cols = [c for c in cols if c in today.columns]
+st.dataframe(today[cols].reset_index(drop=True), use_container_width=True)
+
+sel = st.selectbox("Inspect a ticker", today["ticker"].tolist()) if not today.empty else None
+if sel:
+    row = today[today["ticker"] == sel].iloc[0]
+    st.markdown(f"### {sel} — {row['prerun_score']} ({row['classification']})")
+    st.text(row.get("explanation", "No explanation stored."))
