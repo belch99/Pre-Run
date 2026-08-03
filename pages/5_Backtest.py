@@ -1,6 +1,11 @@
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
 import streamlit as st
 import pandas as pd
-from _shared import load_table, empty_state
+import json
+from src.utils.dashboard_helpers import load_table, empty_state
 
 st.title("Backtest")
 st.caption("Does a higher PRE-RUN score actually correspond to a higher probability "
@@ -22,7 +27,6 @@ st.markdown(f"**Model:** `{row['model_version']}` &nbsp; | &nbsp; "
             f"**Window:** {row['start_date']} → {row['end_date']} &nbsp; | &nbsp; "
             f"**Signals:** {row['n_signals']}")
 
-import json
 results = json.loads(row["results_json"]) if row["results_json"] else {}
 if "bucket_table" in results:
     st.subheader("Hit rate by score bucket")
