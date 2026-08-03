@@ -1,0 +1,48 @@
+2026-08-03 04:20:31,788 | ERROR | data.prices | yfinance fetch failed for AAPL: Expecting value: line 1 column 1 (char 0)
+2026-08-03 04:20:31,839 | ERROR | data.prices | Stooq fallback failed for AAPL: HTTP Error 403: Forbidden
+2026-08-03 04:20:32,321 | ERROR | data.prices | yfinance fetch failed for MSFT: Expecting value: line 1 column 1 (char 0)
+2026-08-03 04:20:32,451 | ERROR | data.prices | Stooq fallback failed for MSFT: HTTP Error 403: Forbidden
+2026-08-03 04:24:28,354 | ERROR | data.prices | yfinance fetch failed for AAPL: Expecting value: line 1 column 1 (char 0)
+2026-08-03 04:24:28,565 | ERROR | data.prices | Stooq fallback failed for AAPL: HTTP Error 403: Forbidden
+2026-08-03 04:24:29,105 | ERROR | data.prices | yfinance fetch failed for AFRM: Expecting value: line 1 column 1 (char 0)
+2026-08-03 04:24:29,119 | ERROR | data.prices | Stooq fallback failed for AFRM: HTTP Error 403: Forbidden
+2026-08-03 04:24:29,653 | WARNING | data.prices | yfinance returned no data for AMD
+2026-08-03 04:24:29,779 | ERROR | data.prices | Stooq fallback failed for AMD: HTTP Error 403: Forbidden
+2026-08-03 04:24:30,169 | WARNING | data.prices | yfinance returned no data for CELH
+2026-08-03 04:24:30,182 | ERROR | data.prices | Stooq fallback failed for CELH: HTTP Error 403: Forbidden
+2026-08-03 04:24:30,603 | WARNING | data.prices | yfinance returned no data for COIN
+2026-08-03 04:24:30,761 | ERROR | data.prices | Stooq fallback failed for COIN: HTTP Error 403: Forbidden
+2026-08-03 04:24:31,234 | WARNING | data.prices | yfinance returned no data for CVNA
+2026-08-03 04:24:31,267 | ERROR | data.prices | Stooq fallback failed for CVNA: HTTP Error 403: Forbidden
+2026-08-03 04:24:31,734 | WARNING | data.prices | yfinance returned no data for ENVX
+2026-08-03 04:24:31,767 | ERROR | data.prices | Stooq fallback failed for ENVX: HTTP Error 403: Forbidden
+2026-08-03 04:24:32,252 | WARNING | data.prices | yfinance returned no data for IONQ
+2026-08-03 04:24:32,270 | ERROR | data.prices | Stooq fallback failed for IONQ: HTTP Error 403: Forbidden
+2026-08-03 04:24:32,664 | WARNING | data.prices | yfinance returned no data for IWM
+2026-08-03 04:24:32,809 | ERROR | data.prices | Stooq fallback failed for IWM: HTTP Error 403: Forbidden
+2026-08-03 04:24:33,190 | WARNING | data.prices | yfinance returned no data for MARA
+2026-08-03 04:24:33,202 | ERROR | data.prices | Stooq fallback failed for MARA: HTTP Error 403: Forbidden
+2026-08-03 04:24:33,595 | WARNING | data.prices | yfinance returned no data for MSFT
+2026-08-03 04:24:33,608 | ERROR | data.prices | Stooq fallback failed for MSFT: HTTP Error 403: Forbidden
+2026-08-03 04:24:33,989 | WARNING | data.prices | yfinance returned no data for NVDA
+2026-08-03 04:24:34,117 | ERROR | data.prices | Stooq fallback failed for NVDA: HTTP Error 403: Forbidden
+2026-08-03 04:24:34,491 | WARNING | data.prices | yfinance returned no data for PLTR
+2026-08-03 04:24:34,502 | ERROR | data.prices | Stooq fallback failed for PLTR: HTTP Error 403: Forbidden
+2026-08-03 04:24:34,880 | WARNING | data.prices | yfinance returned no data for QQQ
+2026-08-03 04:24:34,894 | ERROR | data.prices | Stooq fallback failed for QQQ: HTTP Error 403: Forbidden
+2026-08-03 04:24:35,325 | WARNING | data.prices | yfinance returned no data for RIOT
+2026-08-03 04:24:35,341 | ERROR | data.prices | Stooq fallback failed for RIOT: HTTP Error 403: Forbidden
+2026-08-03 04:24:35,798 | WARNING | data.prices | yfinance returned no data for RIVN
+2026-08-03 04:24:35,813 | ERROR | data.prices | Stooq fallback failed for RIVN: HTTP Error 403: Forbidden
+2026-08-03 04:24:36,199 | WARNING | data.prices | yfinance returned no data for RKLB
+2026-08-03 04:24:36,211 | ERROR | data.prices | Stooq fallback failed for RKLB: HTTP Error 403: Forbidden
+2026-08-03 04:24:36,593 | WARNING | data.prices | yfinance returned no data for SMCI
+2026-08-03 04:24:36,605 | ERROR | data.prices | Stooq fallback failed for SMCI: HTTP Error 403: Forbidden
+2026-08-03 04:24:36,992 | WARNING | data.prices | yfinance returned no data for SOFI
+2026-08-03 04:24:37,148 | ERROR | data.prices | Stooq fallback failed for SOFI: HTTP Error 403: Forbidden
+2026-08-03 04:24:37,620 | WARNING | data.prices | yfinance returned no data for SPY
+2026-08-03 04:24:37,634 | ERROR | data.prices | Stooq fallback failed for SPY: HTTP Error 403: Forbidden
+2026-08-03 04:24:38,044 | WARNING | data.prices | yfinance returned no data for TSLA
+2026-08-03 04:24:38,058 | ERROR | data.prices | Stooq fallback failed for TSLA: HTTP Error 403: Forbidden
+2026-08-03 04:24:38,528 | WARNING | data.prices | yfinance returned no data for UPST
+2026-08-03 04:24:38,660 | ERROR | data.prices | Stooq fallback failed for UPST: HTTP Error 403: Forbidden
