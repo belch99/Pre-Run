@@ -1,5 +1,9 @@
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
 import streamlit as st
-from _shared import load_table, empty_state
+from src.utils.dashboard_helpers import load_table, empty_state
 
 st.title("Paper Trades")
 st.caption("Every hypothetical trade PRE-RUN has ever generated. Nothing here is ever deleted (SPEC #24).")
