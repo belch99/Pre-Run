@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.pyc
+data/raw/*
+data/processed/*
+logs/
+config/.env
+.streamlit/
+.pytest_cache/
