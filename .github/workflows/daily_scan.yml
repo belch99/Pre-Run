@@ -1,0 +1,34 @@
+name: PRE-RUN Daily Scan
+
+on:
+  schedule:
+    - cron: "15 21 * * 1-5"
+  workflow_dispatch: {}
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run daily scan
+        env:
+          SEC_EDGAR_USER_AGENT: "PRE-RUN Research Project github-actions@users.noreply.github.com"
+        run: python scripts/run_daily_scan.py
+
+      - name: Commit updated database
+        run: |
+          git config user.name "pre-run-bot"
+          git config user.email "actions@github.com"
+          git add -f data/database/pre_run.db
+          git diff --cached --quiet || git commit -m "Daily scan $(date -u +%Y-%m-%d)"
+          git push
