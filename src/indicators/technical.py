@@ -164,6 +164,32 @@ def distance_to_breakout(last_price: float, resistance: float) -> float:
     if pd.isna(resistance) or resistance <= 0:
         return np.nan
     return (resistance - last_price) / resistance
+    def ema(series: pd.Series, span: int) -> float:
+    if len(series) < span:
+        return np.nan
+    return series.ewm(span=span, adjust=False).mean().iloc[-1]
+
+
+def ema_trend_alignment(df: pd.DataFrame) -> dict:
+    close = df["adj_close"]
+    last = close.iloc[-1]
+    e8, e21, e50, e200 = ema(close, 8), ema(close, 21), ema(close, 50), ema(close, 200)
+
+    above_8 = bool(last > e8) if not pd.isna(e8) else None
+    above_21 = bool(last > e21) if not pd.isna(e21) else None
+    above_50 = bool(last > e50) if not pd.isna(e50) else None
+    above_200 = bool(last > e200) if not pd.isna(e200) else None
+
+    stacked = None
+    if all(v is not None for v in [e8, e21, e50, e200]) and not any(pd.isna(v) for v in [e8, e21, e50, e200]):
+        stacked = bool(e8 > e21 > e50 > e200) and bool(above_8)
+
+    return {
+        "ema_8": e8, "ema_21": e21, "ema_50": e50, "ema_200": e200,
+        "above_ema_8": above_8, "above_ema_21": above_21,
+        "above_ema_50": above_50, "above_ema_200": above_200,
+        "stacked_uptrend": stacked,
+    }
 
 
 def compute_all(df: pd.DataFrame, spy_df: pd.DataFrame = None, sector_df: pd.DataFrame = None) -> dict:
@@ -208,5 +234,7 @@ def compute_all(df: pd.DataFrame, spy_df: pd.DataFrame = None, sector_df: pd.Dat
     last_price = df["adj_close"].iloc[-1]
     out["distance_to_breakout_pct"] = distance_to_breakout(last_price, out.get("resistance_20d"))
     out["trigger_price"] = out.get("resistance_20d")
+
+    out.update(ema_trend_alignment(df))
 
     return out
